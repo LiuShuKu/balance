@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>net.balance</groupId>
+        <artifactId>balance-spring-boot-starter</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <packaging>pom</packaging>
+
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>balance-bom</artifactId>
+    <description>提供丰富的Java工具方法，此模块为Balance所有模块汇总，最终形式为拆分开的多个jar包，可以通过exclude方式排除不需要的模块</description>
+    <url>https://github.com/LiuShuKu/balance</url>
+
+
+    <properties>
+    </properties>
+
+</project>
