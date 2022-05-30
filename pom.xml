@@ -5,14 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.balance</groupId>
-    <artifactId>balance-spring-boot-starter</artifactId>
+    <artifactId>balance</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
 
     <modules>
         <module>balance-bom</module>
+        <module>balance-spring-boot-starter</module>
+        <module>balance-s3-spring-boot-starter</module>
     </modules>
 
+
+    <properties>
+        <spring-boot.version>2.7.0</spring-boot.version>
+    </properties>
 
 </project>
