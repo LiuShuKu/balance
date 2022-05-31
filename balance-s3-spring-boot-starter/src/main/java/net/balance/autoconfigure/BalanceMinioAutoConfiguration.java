@@ -1,12 +1,9 @@
 package net.balance.autoconfigure;
 
 import net.balance.properties.MinioProperties;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-
-import javax.annotation.Resource;
 
 /**
  * MiniIo配置类
@@ -18,6 +15,9 @@ import javax.annotation.Resource;
 @AutoConfiguration
 public class BalanceMinioAutoConfiguration {
 
+	/**
+	 * 初始化Minio 配置对象
+	 */
 	@Bean
 	public MinioProperties minioProperties(final MinioProperties minioProperties) {
 		return minioProperties;
