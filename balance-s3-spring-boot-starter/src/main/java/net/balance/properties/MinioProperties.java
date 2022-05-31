@@ -1,17 +1,15 @@
 package net.balance.properties;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import javax.crypto.SecretKey;
 
 /**
  * 读取minio配置 <br>
- *
+ * <p>
  * 官方文档: <br>
- * 		http://docs.minio.org.cn/docs/master/java-client-quickstart-guide
+ * http://docs.minio.org.cn/docs/master/java-client-quickstart-guide
+ *
  * @author : liushuku
  * @date : 30 : 05 : 2022/5/30
  */
@@ -32,7 +30,7 @@ public class MinioProperties {
 	/**
 	 * Secret key是你账户的密码。
 	 */
-	private String  secretKey;
+	private String secretKey;
 
 
 	public String getEndpoint() {
