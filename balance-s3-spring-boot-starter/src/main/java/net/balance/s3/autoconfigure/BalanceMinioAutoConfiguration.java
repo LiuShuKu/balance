@@ -1,25 +1,29 @@
-package net.balance.autoconfigure;
+package net.balance.s3.autoconfigure;
 
-import net.balance.properties.MinioProperties;
+import net.balance.s3.properties.MinioProperties;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
- * MiniIo配置类
+ * Minio配置类
  *
  * @author : liushuku
  * @date : 30 : 05 : 2022/5/30
  */
 @EnableConfigurationProperties(MinioProperties.class)
 @AutoConfiguration
+@ComponentScan("net.balance.s3")
 public class BalanceMinioAutoConfiguration {
 
 	/**
 	 * 初始化Minio 配置对象
 	 */
 	@Bean
-	public MinioProperties minioProperties(final MinioProperties minioProperties) {
-		return minioProperties;
+	@ConditionalOnMissingBean
+	public MinioProperties minioProperties(final MinioProperties properties) {
+		return properties;
 	}
 }

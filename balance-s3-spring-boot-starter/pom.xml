@@ -11,6 +11,10 @@
     <!--  对象存储实现  -->
     <artifactId>balance-s3-spring-boot-starter</artifactId>
 
+    <properties>
+        <minio.version>8.4.1</minio.version>
+    </properties>
+
     <dependencies>
         <!-- 核心依赖 -->
         <dependency>
@@ -27,10 +31,18 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- 自动配置 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>${spring-boot.version}</version>
+        </dependency>
+
+        <!-- minio 客户端 -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>${minio.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,7 +1,6 @@
-package net.balance.properties;
+package net.balance.s3.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 
 /**
@@ -13,22 +12,32 @@ import org.springframework.stereotype.Component;
  * @author : liushuku
  * @date : 30 : 05 : 2022/5/30
  */
-@Component
 @ConfigurationProperties(prefix = "balance.s3.minio")
 public class MinioProperties {
 
+
+	public MinioProperties(String endpoint, String accessKey, String secretKey) {
+		this.endpoint = endpoint;
+		this.accessKey = accessKey;
+		this.secretKey = secretKey;
+	}
+
+
+	public MinioProperties() {
+	}
+
 	/**
-	 * 对象存储服务的URL
+	 * URL
 	 */
 	private String endpoint;
 
 	/**
-	 * Access key就像用户ID，可以唯一标识你的账户。
+	 * Access key
 	 */
 	private String accessKey;
 
 	/**
-	 * Secret key是你账户的密码。
+	 * Secret key
 	 */
 	private String secretKey;
 
@@ -56,4 +65,11 @@ public class MinioProperties {
 	public void setSecretKey(String secretKey) {
 		this.secretKey = secretKey;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Balance-MinioProperties{" + "endpoint='" + endpoint + '\'' + ", accessKey='" + accessKey + '\'' + ", secretKey='" + secretKey + '\'' + '}';
+	}
+
 }
