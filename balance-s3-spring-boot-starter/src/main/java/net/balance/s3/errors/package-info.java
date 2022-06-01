@@ -4,4 +4,4 @@
  * @author : liushuku
  * @date : 31 : 05 : 2022/5/31
  */
-package net.balance.s3.exception;
+package net.balance.s3.errors;

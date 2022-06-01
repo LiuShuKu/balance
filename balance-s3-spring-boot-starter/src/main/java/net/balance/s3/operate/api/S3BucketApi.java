@@ -45,5 +45,4 @@ public interface S3BucketApi {
 	 */
 	boolean removeBucket(String bucketName);
 
-
 }
