@@ -1,5 +1,6 @@
 package net.balance.s3.autoconfigure;
 
+import io.minio.MinioClient;
 import net.balance.s3.properties.MinioProperties;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -25,5 +26,18 @@ public class BalanceMinioAutoConfiguration {
 	@ConditionalOnMissingBean
 	public MinioProperties minioProperties(final MinioProperties properties) {
 		return properties;
+	}
+
+	/**
+	 * 初始化Minio 客户端
+	 */
+	@Bean
+	@ConditionalOnMissingBean
+	public MinioClient minioClient(final MinioProperties properties) {
+
+		return MinioClient.builder()
+				.endpoint(properties.getEndpoint())
+				.credentials(properties.getAccessKey(), properties.getSecretKey())
+				.build();
 	}
 }
