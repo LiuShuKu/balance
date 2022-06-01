@@ -32,7 +32,9 @@ public class MinioProperties {
 	private String secretKey;
 
 	/**
-	 * 存储桶名称
+	 * 存储桶名称(选填)
+	 * <p>
+	 * 若不为空则默认采用此桶
 	 */
 	private String bucketName;
 

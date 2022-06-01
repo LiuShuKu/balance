@@ -8,5 +8,18 @@ package net.balance.s3.operate.base;
  */
 public abstract class BaseS3 {
 
+	/**
+	 * 获取当前工具版本
+	 *
+	 * @return 当前应用使用的Maven依赖版本
+	 */
+	public abstract String currentToolVersion();
+
+	/**
+	 * 获取当前版本
+	 *
+	 * @return 当前存储产品版本
+	 */
+	public abstract String currentVersion();
 }
 

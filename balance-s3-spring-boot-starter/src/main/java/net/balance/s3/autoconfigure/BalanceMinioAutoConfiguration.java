@@ -34,7 +34,6 @@ public class BalanceMinioAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public MinioClient minioClient(final MinioProperties properties) {
-
 		return MinioClient.builder()
 				.endpoint(properties.getEndpoint())
 				.credentials(properties.getAccessKey(), properties.getSecretKey())
