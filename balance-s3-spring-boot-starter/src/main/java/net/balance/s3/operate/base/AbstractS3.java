@@ -6,7 +6,7 @@ package net.balance.s3.operate.base;
  * @author : liushuku
  * @date : 31 : 05 : 2022/5/31
  */
-public abstract class BaseS3 {
+public abstract class AbstractS3 {
 
 	/**
 	 * 获取当前工具版本

@@ -1,9 +1,9 @@
 package net.balance.common;
 
 import cn.hutool.core.lang.Console;
-import net.balance.common.system.AssertBalanceException;
-import net.balance.common.system.BalanceCode;
-import net.balance.common.system.BalanceException;
+import net.balance.common.system.error.base.AssertBalanceException;
+import net.balance.common.system.error.base.BalanceException;
+import net.balance.common.system.model.BalanceCode;
 import org.junit.Test;
 
 

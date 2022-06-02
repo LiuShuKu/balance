@@ -1,0 +1,5 @@
+balance:
+  s3:
+    minio:
+      endpoint: www.url.com
+      bucket-name: name

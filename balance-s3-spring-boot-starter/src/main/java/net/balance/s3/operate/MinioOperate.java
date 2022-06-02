@@ -2,16 +2,14 @@ package net.balance.s3.operate;
 
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
-import io.minio.errors.MinioException;
+import net.balance.common.system.error.base.AssertBalanceException;
+import net.balance.common.system.model.BalanceCode;
 import net.balance.s3.model.BalanceBucket;
 import net.balance.s3.operate.api.S3BucketApi;
-import net.balance.s3.operate.base.BaseS3;
+import net.balance.s3.operate.base.AbstractS3;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -21,7 +19,7 @@ import java.util.List;
  * @date : 31 : 05 : 2022/5/31
  */
 @Component
-public class MinioOperate extends BaseS3 implements S3BucketApi {
+public class MinioOperate extends AbstractS3 implements S3BucketApi {
 
 	@Resource
 	private MinioClient client;
@@ -55,24 +53,17 @@ public class MinioOperate extends BaseS3 implements S3BucketApi {
 	 * @param bucketName 存储桶名称
 	 * @return 创建结果
 	 */
+	@Override
 	public boolean makeBucket(String bucketName) {
+		MakeBucketArgs param = MakeBucketArgs.builder().bucket(bucketName).build();
 
-		MakeBucketArgs param = MakeBucketArgs
-				.builder()
-				.bucket(bucketName)
-				.build();
 		try {
 			client.makeBucket(param);
-		} catch (MinioException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (InvalidKeyException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			AssertBalanceException.balanceException(true, BalanceCode.CodeOperationFailed);
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	/**
@@ -81,6 +72,7 @@ public class MinioOperate extends BaseS3 implements S3BucketApi {
 	 * @param bucketName 存储桶名称
 	 * @return true 存在 ; false 不存在
 	 */
+	@Override
 	public boolean bucketExists(String bucketName) {
 		return false;
 	}
@@ -90,6 +82,7 @@ public class MinioOperate extends BaseS3 implements S3BucketApi {
 	 *
 	 * @return 存储桶列表 @see{List BalanceBucket}
 	 */
+	@Override
 	public List<BalanceBucket> listBuckets() {
 		return null;
 	}
@@ -102,6 +95,7 @@ public class MinioOperate extends BaseS3 implements S3BucketApi {
 	 * @param bucketName 存储桶名称
 	 * @return true 删除成功 ; false 删除失败
 	 */
+	@Override
 	public boolean removeBucket(String bucketName) {
 		return false;
 	}

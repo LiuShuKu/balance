@@ -1,6 +1,6 @@
 package net.balance.s3.operate;
 
-import net.balance.s3.operate.base.BaseS3;
+import net.balance.s3.operate.base.AbstractS3;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @date : 31 : 05 : 2022/5/31
  */
 @Component
-public class ObsOperate extends BaseS3 {
+public class ObsOperate extends AbstractS3 {
 
 
 	/**

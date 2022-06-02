@@ -1,4 +1,6 @@
-package net.balance.common.system;
+package net.balance.common.system.error.base;
+
+import net.balance.common.system.model.BalanceCode;
 
 /**
  * 定义项目异常服务

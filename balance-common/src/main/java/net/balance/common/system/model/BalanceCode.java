@@ -1,4 +1,6 @@
-package net.balance.common.system;
+package net.balance.common.system.model;
+
+import lombok.Builder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +11,7 @@ import java.util.Map;
  * @author : liushuku
  * @date : 31 : 05 : 2022/5/31
  */
+@Builder
 public enum BalanceCode {
 
 	/**
