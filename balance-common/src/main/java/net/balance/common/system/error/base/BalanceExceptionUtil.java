@@ -3,12 +3,52 @@ package net.balance.common.system.error.base;
 import net.balance.common.system.model.BalanceCode;
 
 /**
- * 异常断言类
+ * 系统自定义异常 工具类
  *
  * @author : liushuku
  * @date : 31 : 05 : 2022/5/31
  */
-public class AssertBalanceException {
+public class BalanceExceptionUtil {
+
+	/**
+	 * 抛出BalanceException
+	 *
+	 * @throws BalanceException
+	 */
+	public static void newBalanceException() throws BalanceException {
+		throw new BalanceException();
+	}
+
+	/**
+	 * 抛出BalanceException
+	 *
+	 * @param errMsg 错误消息
+	 * @throws BalanceException
+	 */
+	public static void newBalanceException(final String errMsg) throws BalanceException {
+		throw new BalanceException(errMsg);
+	}
+
+	/**
+	 * 抛出BalanceException
+	 *
+	 * @param balanceCode 数据载体
+	 * @throws BalanceException
+	 */
+	public static void newBalanceException(final BalanceCode balanceCode) throws BalanceException {
+		throw new BalanceException(balanceCode);
+	}
+
+	/**
+	 * 抛出BalanceException
+	 *
+	 * @param errMsg      错误消息
+	 * @param balanceCode 数据载体
+	 * @throws BalanceException
+	 */
+	public static void newBalanceException(final String errMsg, final BalanceCode balanceCode) throws BalanceException {
+		throw new BalanceException();
+	}
 
 	/**
 	 * 断言成功将抛出 BalanceException
@@ -48,7 +88,6 @@ public class AssertBalanceException {
 		}
 	}
 
-
 	/**
 	 * 断言成功将抛出 BalanceException
 	 *
@@ -62,5 +101,4 @@ public class AssertBalanceException {
 			throw new BalanceException(balanceCode, errMsg);
 		}
 	}
-
 }

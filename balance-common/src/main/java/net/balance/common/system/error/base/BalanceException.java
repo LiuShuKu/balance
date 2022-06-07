@@ -9,6 +9,7 @@ import net.balance.common.system.model.BalanceCode;
  * @date : 31 : 05 : 2022/5/31
  */
 public class BalanceException extends RuntimeException {
+
 	private static final long serialVersionUID = 35034225777994364L;
 
 	/**
