@@ -47,8 +47,20 @@ public class BalanceExceptionUtil {
 	 * @throws BalanceException
 	 */
 	public static void newBalanceException(final String errMsg, final BalanceCode balanceCode) throws BalanceException {
+		throw new BalanceException(balanceCode, errMsg);
+	}
+
+	/**
+	 * 抛出BalanceException
+	 *
+	 * @param exception 异常信息
+	 * @throws BalanceException
+	 */
+	public static void newBalanceException(final Exception exception) throws BalanceException {
+		BalanceCode error = BalanceCode.CodeInternalError;
 		throw new BalanceException();
 	}
+
 
 	/**
 	 * 断言成功将抛出 BalanceException
