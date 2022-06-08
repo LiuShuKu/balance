@@ -51,6 +51,13 @@ public class Either<E, V> {
 		this.value = null;
 	}
 
+	@Override
+	public String toString() {
+		return "Either{" +
+				"exception=" + exception +
+				", value=" + value +
+				'}';
+	}
 
 	/**
 	 * 设置异常
@@ -81,6 +88,7 @@ public class Either<E, V> {
 	public Optional<E> getException() {
 		return Optional.ofNullable(exception);
 	}
+
 
 	/**
 	 * 获取数据
@@ -138,6 +146,8 @@ public class Either<E, V> {
 	}
 	// ------------------- 有参有返回值函数 处理
 	// ------------------- 有参无返回值函数 处理
+
+
 	// ------------------- 无参有返回值函数 处理
 
 	/**

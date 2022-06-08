@@ -15,6 +15,7 @@
         <module>balance-spring-boot-starter</module>
         <module>balance-s3-spring-boot-starter</module>
         <module>balance-common</module>
+        <module>balance-log-spring-boot-starter</module>
     </modules>
 
 

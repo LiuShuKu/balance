@@ -2,7 +2,8 @@ package net.balance.s3.operate;
 
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
-import net.balance.common.system.error.base.AssertBalanceException;
+import net.balance.common.system.error.Either;
+import net.balance.common.system.error.base.BalanceExceptionUtil;
 import net.balance.common.system.model.BalanceCode;
 import net.balance.s3.model.BalanceBucket;
 import net.balance.s3.operate.api.S3BucketApi;
@@ -55,12 +56,22 @@ public class MinioOperate extends AbstractS3 implements S3BucketApi {
 	 */
 	@Override
 	public boolean makeBucket(String bucketName) {
-		MakeBucketArgs param = MakeBucketArgs.builder().bucket(bucketName).build();
+		final MakeBucketArgs param = MakeBucketArgs.builder().bucket(bucketName).build();
+
+		Either either = Either.warpBalanceSupplier(() -> {
+			client.makeBucket(param);
+			return null;
+		});
+
+		if (either.exceptionIsNotEmpty()) {
+			BalanceExceptionUtil.newBalanceException((Exception) either.getException().get(), BalanceCode.CodeInternalError);
+		}
+
 
 		try {
-			client.makeBucket(param);
+
 		} catch (Exception e) {
-			AssertBalanceException.balanceException(true, BalanceCode.CodeOperationFailed);
+			BalanceExceptionUtil.balanceException(true, BalanceCode.CodeOperationFailed);
 			return false;
 		}
 		return true;

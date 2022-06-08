@@ -18,6 +18,11 @@ public class BalanceException extends RuntimeException {
 	private BalanceCode balanceCode;
 
 	/**
+	 *
+	 */
+	private Exception innerException;
+
+	/**
 	 * 向异常中设置错误信息
 	 *
 	 * @param errMsg 错误信息内容
@@ -44,6 +49,16 @@ public class BalanceException extends RuntimeException {
 	}
 
 	/**
+	 * 向异常中设置载体
+	 *
+	 * @param exception 异常信息
+	 */
+	protected BalanceException(final Exception exception) {
+		super();
+		this.innerException = exception;
+	}
+
+	/**
 	 * 向异常中 设置数据载体和错误信息
 	 *
 	 * @param balanceCode 数据载体
@@ -64,11 +79,29 @@ public class BalanceException extends RuntimeException {
 	}
 
 	/**
+	 * 获取原始嵌套体
+	 *
+	 * @return
+	 */
+	public Exception exceptionDetail() {
+		return this.innerException;
+	}
+
+	/**
 	 * 检查是否存数据载体
 	 *
 	 * @return
 	 */
-	public boolean isNotEmpty() {
+	public boolean innerExceptionIsNotEmpty() {
+		return this.innerException != null;
+	}
+
+	/**
+	 * 检查是否存数据载体
+	 *
+	 * @return
+	 */
+	public boolean balanceCodeIsNotEmpty() {
 		return this.balanceCode != null;
 	}
 }

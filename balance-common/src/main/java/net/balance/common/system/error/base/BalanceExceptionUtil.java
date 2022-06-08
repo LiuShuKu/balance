@@ -32,6 +32,17 @@ public class BalanceExceptionUtil {
 	/**
 	 * 抛出BalanceException
 	 *
+	 * @param exception   异常信息
+	 * @param balanceCode 数据载体
+	 * @throws BalanceException
+	 */
+	public static void newBalanceException(final Exception exception, final BalanceCode balanceCode) throws BalanceException {
+		throw new BalanceException(exception);
+	}
+
+	/**
+	 * 抛出BalanceException
+	 *
 	 * @param balanceCode 数据载体
 	 * @throws BalanceException
 	 */
@@ -48,17 +59,6 @@ public class BalanceExceptionUtil {
 	 */
 	public static void newBalanceException(final String errMsg, final BalanceCode balanceCode) throws BalanceException {
 		throw new BalanceException(balanceCode, errMsg);
-	}
-
-	/**
-	 * 抛出BalanceException
-	 *
-	 * @param exception 异常信息
-	 * @throws BalanceException
-	 */
-	public static void newBalanceException(final Exception exception) throws BalanceException {
-		BalanceCode error = BalanceCode.CodeInternalError;
-		throw new BalanceException();
 	}
 
 

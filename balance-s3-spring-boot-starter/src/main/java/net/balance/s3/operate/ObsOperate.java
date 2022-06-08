@@ -18,7 +18,7 @@ public class ObsOperate extends AbstractS3 {
 	/**
 	 * 获取当前工具版本
 	 *
-	 * @return 当前应用使用的Maven依赖版本
+	 * @return 当前应用使用的依赖版本
 	 */
 	@Override
 	public String currentToolVersion() {
