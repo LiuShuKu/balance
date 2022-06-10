@@ -5,17 +5,18 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
 /**
- * 读取minio配置 <br>
+ * 读取obs配置 <br>
  * <p>
  * 官方文档: <br>
- * http://docs.minio.org.cn/docs/master/java-client-quickstart-guide
+ * https://support.huaweicloud.com/sdk-java-devg-obs/obs_21_0102.html
  *
  * @author : liushuku
  * @date : 30 : 05 : 2022/5/30
  */
 @Data
-@ConfigurationProperties(prefix = "balance.s3.minio")
-public class MinioProperties {
+@ConfigurationProperties(prefix = "balance.s3.obs")
+public class ObsProperties {
+
 	/**
 	 * URL
 	 */
@@ -38,15 +39,14 @@ public class MinioProperties {
 	 */
 	private String bucketName;
 
-
-	public MinioProperties(String endpoint, String accessKey, String secretKey, String bucketName) {
+	public ObsProperties(String endpoint, String accessKey, String secretKey, String bucketName) {
 		this.endpoint = endpoint;
 		this.accessKey = accessKey;
 		this.secretKey = secretKey;
 		this.bucketName = bucketName;
 	}
 
-	public MinioProperties() {
+	public ObsProperties() {
 	}
 
 	public boolean isEmpty() {

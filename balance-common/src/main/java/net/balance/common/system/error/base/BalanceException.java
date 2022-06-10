@@ -54,7 +54,7 @@ public class BalanceException extends RuntimeException {
 	 * @param exception 异常信息
 	 */
 	protected BalanceException(final Exception exception) {
-		super();
+		super(exception.getMessage());
 		this.innerException = exception;
 	}
 

@@ -1,5 +1,7 @@
 balance:
   s3:
-    minio:
-      endpoint: www.url.com
-      bucket-name: name
+    obs:
+      endpoint: obs.cn-north-4.myhuaweicloud.com
+      accessKey: WUU3CVUPDXH5ANEFLYMI
+      secretKey: f11u7NcmaFxwPFi7aUZx3gglckmDNLylcbMgRR8k
+

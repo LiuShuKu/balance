@@ -1,1 +1,2 @@
 net.balance.s3.autoconfigure.BalanceMinioAutoConfiguration
+net.balance.s3.autoconfigure.BalanceObsAutoConfiguration

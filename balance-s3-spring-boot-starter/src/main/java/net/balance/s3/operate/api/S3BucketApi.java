@@ -1,11 +1,11 @@
 package net.balance.s3.operate.api;
 
-import net.balance.s3.model.BalanceBucket;
+import io.minio.messages.Bucket;
 
 import java.util.List;
 
 /**
- * 文件桶策略
+ * 文件桶操作
  *
  * @author : liushuku
  * @date : 01 : 06 : 2022/6/1
@@ -18,7 +18,7 @@ public interface S3BucketApi {
 	 * @param bucketName 存储桶名称
 	 * @return 创建结果
 	 */
-	boolean makeBucket(String bucketName);
+	boolean makeBucket(final String bucketName);
 
 	/**
 	 * 检查存储桶是否存在
@@ -26,14 +26,14 @@ public interface S3BucketApi {
 	 * @param bucketName 存储桶名称
 	 * @return true 存在 ; false 不存在
 	 */
-	boolean bucketExists(String bucketName);
+	boolean bucketExists(final String bucketName);
 
 	/**
 	 * 列出所有存储桶
 	 *
-	 * @return 存储桶列表 @see{List BalanceBucket}
+	 * @return 存储桶列表 @see{List Bucket}
 	 */
-	List<BalanceBucket> listBuckets();
+	List<Bucket> listBuckets();
 
 	/**
 	 * 删除存储桶
@@ -43,6 +43,10 @@ public interface S3BucketApi {
 	 * @param bucketName 存储桶名称
 	 * @return true 删除成功 ; false 删除失败
 	 */
-	boolean removeBucket(String bucketName);
+	boolean removeBucket(final String bucketName);
+
+
+
+
 
 }

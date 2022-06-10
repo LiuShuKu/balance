@@ -16,9 +16,20 @@ public class BalanceBucket {
 	 */
 	private String bucketName;
 
+
 	/**
 	 * 创建时间
 	 * 时间戳
 	 */
 	private String created;
+
+	public BalanceBucket(String bucketName, String created) {
+		this.bucketName = bucketName;
+		this.created = created;
+	}
+
+	public BalanceBucket() {
+	}
+
+
 }

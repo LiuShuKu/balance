@@ -10,22 +10,16 @@
     <modelVersion>4.0.0</modelVersion>
     <!--  对象存储实现  -->
     <artifactId>balance-s3-spring-boot-starter</artifactId>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>6</source>
-                    <target>6</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <java.version>8</java.version>
+
         <minio.version>8.4.1</minio.version>
+        <obs.version>3.22.3</obs.version>
     </properties>
+
 
     <dependencies>
         <!-- 核心依赖 -->
@@ -57,6 +51,12 @@
             <version>${minio.version}</version>
         </dependency>
 
+        <!-- 华为云OBS -->
+        <dependency>
+            <groupId>com.huaweicloud</groupId>
+            <artifactId>esdk-obs-java-bundle</artifactId>
+            <version>${obs.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>net.balance</groupId>
@@ -65,5 +65,6 @@
         </dependency>
 
     </dependencies>
+
 
 </project>
