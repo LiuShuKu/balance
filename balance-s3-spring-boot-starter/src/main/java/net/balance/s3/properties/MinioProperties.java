@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 读取minio配置 <br>
  * <p>
  * 官方文档: <br>
- * http://docs.minio.org.cn/docs/master/java-client-quickstart-guide
+ * <a href="http://docs.minio.org.cn/docs/master/java-client-quickstart-guide">...</a>
  *
  * @author : liushuku
  * @date : 30 : 05 : 2022/5/30

@@ -1,5 +1,6 @@
 package net.balance.s3.autoconfigure;
 
+import com.obs.services.Log4j2Configurator;
 import com.obs.services.ObsClient;
 import net.balance.s3.properties.ObsProperties;
 import org.slf4j.Logger;
@@ -41,6 +42,7 @@ public class BalanceObsAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public ObsClient obsClient(final ObsProperties properties) {
+		Log4j2Configurator.setLogConfig("src/main/resources/log4j2.xml");
 		if (properties == null || properties.isEmpty()) {
 			logger.warn("【Obs自动化配置】ObsClient 将无法被初始化.因为没有Obs所需参数");
 		}

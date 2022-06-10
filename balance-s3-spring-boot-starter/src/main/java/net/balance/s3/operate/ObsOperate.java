@@ -20,13 +20,15 @@ import java.util.List;
 /**
  * 封装 华为云Obs 常见操作
  * <p>
- * 参考:https://support.huaweicloud.com/obs/index.html
+ * 参考:<a href="https://support.huaweicloud.com/obs/index.html">...</a>
  *
  * @author : liushuku
  * @date : 31 : 05 : 2022/5/31
  */
 @Component
 public class ObsOperate extends AbstractS3 implements S3BucketApi {
+
+	protected final String bucketDoesNotExist = "NoSuchBucket";
 
 	@Autowired(required = false)
 	private ObsClient obsClient;
@@ -117,13 +119,33 @@ public class ObsOperate extends AbstractS3 implements S3BucketApi {
 	/**
 	 * 删除存储桶
 	 * <p>
-	 * 注意，只有存储桶为空时才能删除成功
+	 * 删除成功条件: <br/>
+	 * 1. 桶不存在   --> 返回删除成功 <br/>
+	 * 2. 桶内无内容 --> 返回删除成功 <br/>
 	 *
 	 * @param bucketName 存储桶名称
 	 * @return true 删除成功 ; false 删除失败
 	 */
 	@Override
 	public boolean removeBucket(String bucketName) {
-		return false;
+		Either either = Either.warpBalanceSupplier(() -> {
+			obsClient.deleteBucket(bucketName);
+			return null;
+		});
+
+		if (either.exceptionIsNotEmpty()) {
+			ObsException e = (ObsException) either.getException().get();
+			if (e.getErrorCode() == bucketDoesNotExist) {
+				return true;
+			}
+			System.out.println("HTTP Code: " + e.getResponseCode());
+			System.out.println("Error Code:" + e.getErrorCode());
+			System.out.println("Error Message: " + e.getErrorMessage());
+
+			System.out.println("Request ID:" + e.getErrorRequestId());
+			System.out.println("Host ID:" + e.getErrorHostId());
+			BalanceExceptionUtil.newBalanceException((Exception) either.getException().get(), BalanceCode.CodeInternalError);
+		}
+		return true;
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 读取obs配置 <br>
  * <p>
  * 官方文档: <br>
- * https://support.huaweicloud.com/sdk-java-devg-obs/obs_21_0102.html
+ * <a href="https://support.huaweicloud.com/sdk-java-devg-obs/obs_21_0102.html">...</a>
  *
  * @author : liushuku
  * @date : 30 : 05 : 2022/5/30

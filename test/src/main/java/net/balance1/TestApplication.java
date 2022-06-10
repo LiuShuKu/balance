@@ -24,10 +24,9 @@ public class TestApplication {
 	}
 
 	@GetMapping("test")
-	public String test() {
-		boolean testcqt = obsOperate.makeBucket("testcqt");
-		System.out.println(testcqt);
-		return "";
+	public boolean test() {
+		boolean b = obsOperate.removeBucket("testcqt-98");
+		return b;
 	}
 
 }
