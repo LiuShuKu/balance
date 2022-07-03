@@ -12,10 +12,11 @@
 
     <modules>
         <module>balance-bom</module>
-        <module>balance-spring-boot-starter</module>
         <module>balance-s3-spring-boot-starter</module>
         <module>balance-common</module>
         <module>balance-log-spring-boot-starter</module>
+        <module>test</module>
+        <module>balance-push-spring-boot-starter</module>
     </modules>
 
 

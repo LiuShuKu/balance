@@ -8,23 +8,20 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <!--  对象存储实现  -->
-    <artifactId>balance-s3-spring-boot-starter</artifactId>
-    <packaging>pom</packaging>
 
+    <packaging>pom</packaging>
     <modules>
-        <module>balance-minio-spring-boot-starter</module>
-        <module>balance-obs-spring-boot-starter</module>
-        <module>balance-s3-common</module>
+        <module>balance-getui-spring-boot-starter</module>
+        <module>balance-mobtech-spring-boot-starter</module>
+        <module>balance-push-common</module>
     </modules>
+
+    <artifactId>balance-push-spring-boot-starter</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <java.version>8</java.version>
-
-        <minio.version>8.4.2</minio.version>
-        <obs.version>3.22.3</obs.version>
     </properties>
 
 </project>

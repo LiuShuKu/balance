@@ -3,28 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>balance</artifactId>
+        <artifactId>balance-push-spring-boot-starter</artifactId>
         <groupId>net.balance</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <!--  对象存储实现  -->
-    <artifactId>balance-s3-spring-boot-starter</artifactId>
-    <packaging>pom</packaging>
 
-    <modules>
-        <module>balance-minio-spring-boot-starter</module>
-        <module>balance-obs-spring-boot-starter</module>
-        <module>balance-s3-common</module>
-    </modules>
+    <artifactId>balance-getui-spring-boot-starter</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <java.version>8</java.version>
-
-        <minio.version>8.4.2</minio.version>
-        <obs.version>3.22.3</obs.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>net.balance</groupId>
+            <artifactId>balance-push-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 </project>
