@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MinioUtil extends MinioOperate {
 
-	final Logger logger = LoggerFactory.getLogger(MinioUtil.class);
+	private final Logger logger = LoggerFactory.getLogger(MinioUtil.class);
 
 	@Autowired(required = false)
 	private MinioClient minioClient;

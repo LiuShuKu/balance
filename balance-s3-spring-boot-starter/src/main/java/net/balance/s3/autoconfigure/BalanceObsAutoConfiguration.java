@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Primary;
 @AutoConfiguration
 public class BalanceObsAutoConfiguration {
 
-	final Logger logger = LoggerFactory.getLogger(BalanceObsAutoConfiguration.class);
+	private final Logger logger = LoggerFactory.getLogger(BalanceObsAutoConfiguration.class);
 
 	/**
 	 * 初始化Obs 配置对象

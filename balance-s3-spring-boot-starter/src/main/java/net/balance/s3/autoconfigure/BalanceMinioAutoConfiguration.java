@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Primary;
 @EnableConfigurationProperties(MinioProperties.class)
 public class BalanceMinioAutoConfiguration {
 
-	final Logger logger = LoggerFactory.getLogger(BalanceMinioAutoConfiguration.class);
+	private final Logger logger = LoggerFactory.getLogger(BalanceMinioAutoConfiguration.class);
 
 	/**
 	 * 初始化Minio 配置对象
