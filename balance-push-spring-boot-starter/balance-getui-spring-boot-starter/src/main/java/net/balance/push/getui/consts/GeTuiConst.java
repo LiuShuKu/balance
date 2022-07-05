@@ -22,4 +22,9 @@ public interface GeTuiConst {
 	 * 个推TOKEN 有效期3小时
 	 */
 	long GETUI_TOKEN_TIME_OUT = 3 * 1000 * 60 * 60;
+
+	/**
+	 * 个推TOKEN 最长有效期
+	 */
+	long GETUI_TOKEN_MAX_TIME_OUT = 23 * 1000 * 60 * 60;
 }

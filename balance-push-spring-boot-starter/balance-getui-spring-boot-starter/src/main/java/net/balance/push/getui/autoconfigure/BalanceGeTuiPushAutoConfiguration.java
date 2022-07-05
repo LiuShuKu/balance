@@ -119,9 +119,8 @@ public class BalanceGeTuiPushAutoConfiguration {
 	public TimedCache<String, String> getuiLocalStorage(final GeTuiProperties properties) {
 		if (properties.isLocalStorage()) {
 			long tokenCacheTimeOut = properties.getTokenCacheTimeOut();
-			long maxTime = 23 * 1000 * 60 * 60;
-			if (tokenCacheTimeOut <= 0 || tokenCacheTimeOut >= maxTime) {
-				properties.setTokenCacheTimeOut(3 * 1000 * 60 * 60);
+			if (tokenCacheTimeOut <= 0 || tokenCacheTimeOut >= GeTuiConst.GETUI_TOKEN_MAX_TIME_OUT) {
+				properties.setTokenCacheTimeOut(GeTuiConst.GETUI_TOKEN_TIME_OUT);
 				logger.warn("【个推推送自动化配置】Token存活时间非法、已默认选择3小时");
 			}
 			return CacheUtil.newTimedCache(properties.getTokenCacheTimeOut());
