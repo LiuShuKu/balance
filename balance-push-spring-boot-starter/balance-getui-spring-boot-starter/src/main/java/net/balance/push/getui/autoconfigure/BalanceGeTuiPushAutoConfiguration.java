@@ -28,7 +28,6 @@ import java.util.List;
  */
 @EnableConfigurationProperties(GeTuiProperties.class)
 @AutoConfiguration
-//@ComponentScan("net.balance.common")
 public class BalanceGeTuiPushAutoConfiguration {
 
 	private final Logger logger = LoggerFactory.getLogger(BalanceGeTuiPushAutoConfiguration.class);
@@ -98,10 +97,11 @@ public class BalanceGeTuiPushAutoConfiguration {
 			try {
 				jedisPool = new JedisPool(config, redisHost.get(0), Integer.valueOf(redisHost.get(1)));
 			} catch (Exception e) {
+				logger.error("【个推推送自动化配置】无法链接redis实例:{}", e.getMessage());
+			} finally {
 				if (jedisPool != null) {
 					jedisPool.close();
 				}
-				logger.error("【个推推送自动化配置】无法链接redis实例:{}", e.getMessage());
 			}
 			return jedisPool.getResource();
 		}
@@ -110,6 +110,7 @@ public class BalanceGeTuiPushAutoConfiguration {
 
 	/**
 	 * 获取个推本地缓存实例
+	 * 注意: 数据会持久化到当前内存,该方法不适于分布式业务.
 	 *
 	 * @return TimedCache<String, String>
 	 */
