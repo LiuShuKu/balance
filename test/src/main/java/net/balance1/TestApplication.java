@@ -1,7 +1,6 @@
 package net.balance1;
 
-import net.balance.s3.autoconfigure.BalanceMinioAutoConfiguration;
-import net.balance.s3.operate.ObsOperate;
+import net.balance.minio.properties.MinioProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,20 +12,26 @@ import javax.annotation.Resource;
  * @author liushuku
  */
 @RestController
-@SpringBootApplication(exclude = BalanceMinioAutoConfiguration.class, scanBasePackages = "net.balance.s3")
+@SpringBootApplication(scanBasePackages = {"net.balance.minio"})
 public class TestApplication {
 
+//	@Resource
+//	private GeTuiAuth geTuiAuth;
+//
+//	@Resource
+//	private GeTuiProperties geTuiProperties;
+
 	@Resource
-	private ObsOperate obsOperate;
+	private MinioProperties minioProperties;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TestApplication.class, args);
 	}
 
 	@GetMapping("test")
-	public boolean test() {
-		boolean b = obsOperate.removeBucket("testcqt-98");
-		return b;
+	public String test() {
+		return minioProperties.getAccessKey();
+		// return geTuiAuth.getToken();
 	}
 
 }

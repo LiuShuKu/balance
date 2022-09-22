@@ -23,13 +23,21 @@ public class BalanceBucket {
 	 */
 	private String created;
 
+	/**
+	 * 全参构造
+	 *
+	 * @param bucketName 桶名称
+	 * @param created    创建时间
+	 */
 	public BalanceBucket(String bucketName, String created) {
 		this.bucketName = bucketName;
 		this.created = created;
 	}
 
+	/**
+	 * 无参构造
+	 */
 	public BalanceBucket() {
 	}
-
 
 }

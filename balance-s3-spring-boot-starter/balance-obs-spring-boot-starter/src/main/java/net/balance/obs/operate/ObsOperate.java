@@ -10,6 +10,7 @@ import io.minio.messages.Bucket;
 import net.balance.common.system.error.Either;
 import net.balance.common.system.error.base.BalanceExceptionUtil;
 import net.balance.common.system.model.BalanceCode;
+import net.balance.s3.common.internal.ObsConstants;
 import net.balance.s3.common.operate.api.S3BucketApi;
 import net.balance.s3.common.operate.base.AbstractS3;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class ObsOperate extends AbstractS3 implements S3BucketApi {
 	 */
 	@Override
 	public String currentToolVersion() {
-		return "1";
+		return ObsConstants.OBS_SDK_VERSION;
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class ObsOperate extends AbstractS3 implements S3BucketApi {
 	 */
 	@Override
 	public String currentVersion() {
-		return null;
+		return ObsConstants.OBS_SERVICES_VERSION;
 	}
 
 

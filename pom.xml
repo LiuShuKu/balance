@@ -15,13 +15,14 @@
         <module>balance-s3-spring-boot-starter</module>
         <module>balance-common</module>
         <module>balance-log-spring-boot-starter</module>
-        <module>test</module>
         <module>balance-push-spring-boot-starter</module>
+        <module>test</module>
     </modules>
 
 
     <properties>
-        <spring-boot.version>2.7.0</spring-boot.version>
+        <!-- SpringBoot 版本 -->
+        <spring-boot.version>2.7.3</spring-boot.version>
     </properties>
 
 </project>

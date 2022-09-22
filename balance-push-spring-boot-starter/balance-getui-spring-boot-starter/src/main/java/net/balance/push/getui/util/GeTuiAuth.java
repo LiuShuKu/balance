@@ -43,7 +43,7 @@ public class GeTuiAuth {
 	 */
 	public String getToken() {
 
-		String tokenName = geTuiProperties.getGetuiTokenName();
+		final String tokenName = geTuiProperties.getGetuiTokenName();
 
 		if (geTuiProperties.isLocalStorage()) {
 			if (!getuiLocalStorage.isEmpty()) {
@@ -63,13 +63,13 @@ public class GeTuiAuth {
 	 * @return token 信息
 	 */
 	private String auth() {
-		String requestUrl = geTuiProperties.getBaseUrl() + geTuiProperties.getAppId() + "/auth";
+		final String requestUrl = geTuiProperties.getBaseUrl() + geTuiProperties.getAppId() + "/auth";
 
-		long timestamp = System.currentTimeMillis();
+		final long timestamp = System.currentTimeMillis();
 
-		String sign = SecureUtil.sha256(geTuiProperties.getAppKey() + timestamp + geTuiProperties.getMasterSecret());
+		final String sign = SecureUtil.sha256(geTuiProperties.getAppKey() + timestamp + geTuiProperties.getMasterSecret());
 
-		Map<Object, Object> result = Forest.post(requestUrl).contentType(GeTuiConst.CONTENT_TYPE).addBody("sign", sign).addBody("timestamp", timestamp).addBody("appkey", geTuiProperties.getAppKey()).onError((ex, req, res) -> {
+		final Map<Object, Object> result = Forest.post(requestUrl).contentType(GeTuiConst.CONTENT_TYPE).addBody("sign", sign).addBody("timestamp", timestamp).addBody("appkey", geTuiProperties.getAppKey()).onError((ex, req, res) -> {
 			logger.error("【个推推送】权限认证失败:{}", ex.getMessage());
 		}).executeAsMap();
 
@@ -80,7 +80,7 @@ public class GeTuiAuth {
 				return "";
 			}
 
-			int code = (int) result.get("code");
+			final int code = (int) result.get("code");
 			if (code != 0) {
 				logger.error("【个推推送】权限认证失败、响应code:{},响应消息{}", code, result.get("msg"));
 				return "";
@@ -89,8 +89,8 @@ public class GeTuiAuth {
 
 
 		// 设置缓存
-		Map<String, String> data = (Map) result.get("data");
-		String token = data.get("token");
+		final Map<String, String> data = (Map) result.get("data");
+		final String token = data.get("token");
 
 		{
 			if (geTuiProperties.isLocalStorage()) {

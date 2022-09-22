@@ -1,5 +1,6 @@
 package net.balance.obs.properties;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -39,17 +40,33 @@ public class ObsProperties {
 	 */
 	private String bucketName;
 
-	public ObsProperties(String endpoint, String accessKey, String secretKey, String bucketName) {
+	/**
+	 * 全参构造方法
+	 *
+	 * @param endpoint   endpoint
+	 * @param accessKey  accessKey
+	 * @param secretKey  secretKey
+	 * @param bucketName 存储桶名称
+	 */
+	protected ObsProperties(String endpoint, String accessKey, String secretKey, String bucketName) {
 		this.endpoint = endpoint;
 		this.accessKey = accessKey;
 		this.secretKey = secretKey;
 		this.bucketName = bucketName;
 	}
 
-	public ObsProperties() {
+	/**
+	 * 无参构造
+	 */
+	private ObsProperties() {
 	}
 
+	/**
+	 * 检查对象是否为空
+	 *
+	 * @return null -> true; not null -> false
+	 */
 	public boolean isEmpty() {
-		return this.accessKey == null || this.secretKey == null || this.endpoint == null;
+		return StrUtil.hasBlank(this.accessKey, this.secretKey, this.endpoint);
 	}
 }

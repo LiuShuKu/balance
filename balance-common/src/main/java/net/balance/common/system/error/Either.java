@@ -14,7 +14,7 @@ import java.util.function.Function;
  * 核心：<br>
  * 1. 封装lang包下的部分函数式接口、全部增加 throw Exception <br>
  * 2. 将会抛出异常的函数、通过闭包的方式传入、内部进行捕捉<br>
- * 3. Golang语言思想 error is value<br>
+ * 3. Golang语言思想 Errors are values <br>
  *
  * @author : liushuku
  * @date : 02 : 06 : 2022/6/2
@@ -49,14 +49,6 @@ public class Either<E, V> {
 	private Either() {
 		this.exception = null;
 		this.value = null;
-	}
-
-	@Override
-	public String toString() {
-		return "Either{" +
-				"exception=" + exception +
-				", value=" + value +
-				'}';
 	}
 
 	/**
@@ -144,9 +136,6 @@ public class Either<E, V> {
 		}
 		return Optional.empty();
 	}
-	// ------------------- 有参有返回值函数 处理
-	// ------------------- 有参无返回值函数 处理
-
 
 	// ------------------- 无参有返回值函数 处理
 
@@ -216,5 +205,14 @@ public class Either<E, V> {
 			return Either.exception(e);
 		}
 		return new Either();
+	}
+
+
+	@Override
+	public String toString() {
+		return "Either{" +
+				"exception=" + exception +
+				", value=" + value +
+				'}';
 	}
 }

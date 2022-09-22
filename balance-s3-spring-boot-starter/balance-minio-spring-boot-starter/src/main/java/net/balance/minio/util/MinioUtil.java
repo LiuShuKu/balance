@@ -37,7 +37,7 @@ public class MinioUtil extends MinioOperate {
 	 * @param bucketName 桶名称
 	 */
 	public void setObjectLockConfiguration(int days, String bucketName) {
-		Either either = Either.warpBalanceSupplier(() -> {
+		final Either either = Either.warpBalanceSupplier(() -> {
 			final ObjectLockConfiguration config = new ObjectLockConfiguration(RetentionMode.COMPLIANCE, new RetentionDurationDays(days));
 			final SetObjectLockConfigurationArgs param = SetObjectLockConfigurationArgs.builder().bucket(bucketName).config(config).build();
 			minioClient.setObjectLockConfiguration(param);

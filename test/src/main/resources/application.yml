@@ -4,4 +4,13 @@ balance:
       endpoint: obs.cn-north-4.myhuaweicloud.com
       accessKey: WUU3CVUPDXH5ANEFLYMI
       secretKey: f11u7NcmaFxwPFi7aUZx3gglckmDNLylcbMgRR8k
+    minio:
+      accessKey: minioaccessKey
+  push:
+    getui:
+      appId: pTZQcED8b47NMXX85RTf3A
+      appKey: sHg6fsX2L16WWZTKkSLni
+      appSecret: 1KfbUiSMK58n186UuPCQ8
+      masterSecret: uSgNXclghW6m126jSDBWf7
+      localStorage: false
 

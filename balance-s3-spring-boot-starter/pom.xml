@@ -16,6 +16,7 @@
         <module>balance-minio-spring-boot-starter</module>
         <module>balance-obs-spring-boot-starter</module>
         <module>balance-s3-common</module>
+        <module>balance-oss-spring-boot-starter</module>
     </modules>
 
     <properties>
@@ -23,8 +24,12 @@
         <maven.compiler.target>8</maven.compiler.target>
         <java.version>8</java.version>
 
-        <minio.version>8.4.2</minio.version>
+        <!--   minio 对象存储 SDK 版本  -->
+        <minio.version>8.4.3</minio.version>
+        <!--   obs   对象存储 SDK 版本  -->
         <obs.version>3.22.3</obs.version>
+        <!--   oss   对象存储 SDK 版本  -->
+        <oss.version>3.15.1</oss.version>
     </properties>
 
 </project>

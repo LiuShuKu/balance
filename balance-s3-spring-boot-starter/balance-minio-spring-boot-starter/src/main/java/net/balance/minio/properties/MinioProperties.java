@@ -1,5 +1,6 @@
 package net.balance.minio.properties;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -39,17 +40,33 @@ public class MinioProperties {
 	private String bucketName;
 
 
-	public MinioProperties(String endpoint, String accessKey, String secretKey, String bucketName) {
+	/**
+	 * 全参构造
+	 *
+	 * @param endpoint   URL
+	 * @param accessKey  Access key
+	 * @param secretKey  Secret key
+	 * @param bucketName 存储桶名称
+	 */
+	protected MinioProperties(String endpoint, String accessKey, String secretKey, String bucketName) {
 		this.endpoint = endpoint;
 		this.accessKey = accessKey;
 		this.secretKey = secretKey;
 		this.bucketName = bucketName;
 	}
 
-	public MinioProperties() {
+	/**
+	 * 无参构造
+	 */
+	private MinioProperties() {
 	}
 
+	/**
+	 * 检查对象是否为空
+	 *
+	 * @return null -> true; not null -> false
+	 */
 	public boolean isEmpty() {
-		return this.accessKey == null || this.secretKey == null || this.endpoint == null;
+		return StrUtil.hasBlank(this.accessKey, this.secretKey, this.endpoint);
 	}
 }

@@ -54,7 +54,7 @@ public class BalanceGeTuiPushAutoConfiguration {
 			config.setLogEnabled(properties.isLogEnabled());
 			// 若不使用本地存储则检查对Redis进行连接
 			if (!properties.isLocalStorage()) {
-				int redisDBNum = properties.getRedisDBNum();
+				final int redisDBNum = properties.getRedisDBNum();
 				if (redisDBNum < 0 || redisDBNum > 15) {
 					// 非法的数据库 默认选择0
 					properties.setRedisDBNum(0);
@@ -119,7 +119,7 @@ public class BalanceGeTuiPushAutoConfiguration {
 	@ConditionalOnMissingBean
 	public TimedCache<String, String> getuiLocalStorage(final GeTuiProperties properties) {
 		if (properties.isLocalStorage()) {
-			long tokenCacheTimeOut = properties.getTokenCacheTimeOut();
+			final long tokenCacheTimeOut = properties.getTokenCacheTimeOut();
 			if (tokenCacheTimeOut <= 0 || tokenCacheTimeOut >= GeTuiConst.GETUI_TOKEN_MAX_TIME_OUT) {
 				properties.setTokenCacheTimeOut(GeTuiConst.GETUI_TOKEN_TIME_OUT);
 				logger.warn("【个推推送自动化配置】Token存活时间非法、已默认选择{}毫秒", GeTuiConst.GETUI_TOKEN_TIME_OUT);

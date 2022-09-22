@@ -21,13 +21,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>net.balance</groupId>
-            <artifactId>balance-s3-spring-boot-starter</artifactId>
+            <artifactId>balance-obs-spring-boot-starter</artifactId>
             <version>1.0.0</version>
+            <scope>compile</scope>
         </dependency>
 
+        <!--        <dependency>-->
+        <!--            <groupId>net.balance</groupId>-->
+        <!--            <artifactId>balance-getui-spring-boot-starter</artifactId>-->
+        <!--            <version>1.0.0</version>-->
+        <!--        </dependency>-->
 
+        <dependency>
+            <groupId>net.balance</groupId>
+            <artifactId>balance-minio-spring-boot-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 
