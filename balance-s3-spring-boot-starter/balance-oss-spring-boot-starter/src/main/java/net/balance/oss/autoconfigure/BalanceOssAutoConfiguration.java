@@ -49,11 +49,10 @@ public class BalanceOssAutoConfiguration {
 		if (properties == null || properties.isEmpty()) {
 			logger.error("【OSS自动化配置】OSSClient 将无法被初始化.因为没有oss所需参数,请检查！");
 		}
-		ClientBuilderConfiguration conf = new ClientBuilderConfiguration();
+		final ClientBuilderConfiguration conf = new ClientBuilderConfiguration();
 		{
 			conf.setUserAgent("balance-oss-service");
 		}
-		final OSS OssClient = new OSSClientBuilder().build(properties.getEndpoint(), properties.getAccessKeyId(), properties.getAccessKeySecret(), conf);
-		return OssClient;
+		return new OSSClientBuilder().build(properties.getEndpoint(), properties.getAccessKeyId(), properties.getAccessKeySecret(), conf);
 	}
 }
