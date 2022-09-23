@@ -12,12 +12,12 @@
     <artifactId>balance-common</artifactId>
 
     <properties>
-        <hutool.version>5.8.6</hutool.version>
+        <hutool.version>5.8.7</hutool.version>
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.24</lombok.version>
-        <forest.version>1.5.24</forest.version>
+        <forest.version>1.5.26</forest.version>
         <jedis.version>2.9.0</jedis.version>
-        <jackson.version>2.13.3</jackson.version>
+        <jackson.version>2.13.4</jackson.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <java.version>8</java.version>
