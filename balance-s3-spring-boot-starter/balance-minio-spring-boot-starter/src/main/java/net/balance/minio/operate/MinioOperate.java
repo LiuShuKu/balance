@@ -9,6 +9,7 @@ import net.balance.common.Balance;
 import net.balance.common.system.error.Either;
 import net.balance.common.system.error.base.BalanceExceptionUtil;
 import net.balance.common.system.model.BalanceCode;
+import net.balance.s3.common.internal.MinioConstants;
 import net.balance.s3.common.operate.api.S3BucketApi;
 import net.balance.s3.common.operate.api.S3ObjectApi;
 import net.balance.s3.common.operate.base.AbstractS3;
@@ -138,7 +139,7 @@ public class MinioOperate extends AbstractS3 implements S3BucketApi, S3ObjectApi
 	 */
 	@Override
 	public String currentApplicationSDKVersion() {
-		return null;
+		return MinioConstants.MINIO_SDK_VERSION;
 	}
 
 	/**

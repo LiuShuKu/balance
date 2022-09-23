@@ -7,6 +7,7 @@ import com.obs.services.model.AvailableZoneEnum;
 import com.obs.services.model.CreateBucketRequest;
 import com.obs.services.model.StorageClassEnum;
 import io.minio.messages.Bucket;
+import net.balance.common.Balance;
 import net.balance.common.system.error.Either;
 import net.balance.common.system.error.base.BalanceExceptionUtil;
 import net.balance.common.system.model.BalanceCode;
@@ -34,27 +35,6 @@ public class ObsOperate extends AbstractS3 implements S3BucketApi {
 	@SuppressWarnings("all")
 	@Autowired(required = false)
 	private ObsClient obsClient;
-
-
-	/**
-	 * 获取当前工具版本
-	 *
-	 * @return 当前应用使用的依赖版本
-	 */
-	@Override
-	public String currentToolVersion() {
-		return ObsConstants.OBS_SDK_VERSION;
-	}
-
-	/**
-	 * 获取当前版本
-	 *
-	 * @return 当前Obs当前版本
-	 */
-	@Override
-	public String currentVersion() {
-		return ObsConstants.OBS_SERVICES_VERSION;
-	}
 
 
 	// ---------------------------- 桶操作
@@ -149,5 +129,25 @@ public class ObsOperate extends AbstractS3 implements S3BucketApi {
 			BalanceExceptionUtil.newBalanceException((Exception) either.getException().get(), BalanceCode.CodeInternalError);
 		}
 		return true;
+	}
+
+	/**
+	 * 当前服务引用官方SDK版本
+	 *
+	 * @return 官方SDK版本
+	 */
+	@Override
+	public String currentApplicationSDKVersion() {
+		return ObsConstants.OBS_SDK_VERSION;
+	}
+
+	/**
+	 * 当前工程版本
+	 *
+	 * @return 当前Balance-SDK版本
+	 */
+	@Override
+	public String currentBalanceSDKVersion() {
+		return Balance.BALANCE_OBS_DEV_SDK_VERSION;
 	}
 }
