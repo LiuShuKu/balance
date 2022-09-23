@@ -1,7 +1,9 @@
 package net.balance.minio.autoconfigure;
 
 import io.minio.MinioClient;
+import net.balance.common.Balance;
 import net.balance.minio.properties.MinioProperties;
+import net.balance.s3.common.internal.MinioConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -41,12 +43,15 @@ public class BalanceMinioAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public MinioClient minioClient(final MinioProperties properties) {
-		if (properties == null || properties.isEmpty()) {
+
+		if (null == properties || properties.isEmpty()) {
 			logger.error("【Minio自动化配置】MinioClient 将无法被初始化.因为没有minio所需参数,请检查！");
 		}
-		return MinioClient.builder()
-				.endpoint(properties.getEndpoint())
-				.credentials(properties.getAccessKey(), properties.getSecretKey())
-				.build();
+
+		final MinioClient client = MinioClient.builder().endpoint(properties.getEndpoint()).credentials(properties.getAccessKey(), properties.getSecretKey()).build();
+		if (null != client) {
+			logger.info("【Balance-Minio】: 服务启动成功！当前SDK版本:{},当前minio依赖版本{}", Balance.BALANCE_MINIO_DEV_SDK_VERSION, MinioConstants.MINIO_SDK_VERSION);
+		}
+		return client;
 	}
 }

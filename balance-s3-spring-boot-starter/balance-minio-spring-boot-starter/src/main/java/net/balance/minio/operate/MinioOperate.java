@@ -1,11 +1,11 @@
 package net.balance.minio.operate;
 
-import com.obs.services.internal.Constants;
 import io.minio.BucketExistsArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.RemoveBucketArgs;
 import io.minio.messages.Bucket;
+import net.balance.common.Balance;
 import net.balance.common.system.error.Either;
 import net.balance.common.system.error.base.BalanceExceptionUtil;
 import net.balance.common.system.model.BalanceCode;
@@ -31,26 +31,6 @@ public class MinioOperate extends AbstractS3 implements S3BucketApi, S3ObjectApi
 	@Autowired(required = false)
 	private MinioClient minioClient;
 
-
-	/**
-	 * 获取当前工具版本
-	 *
-	 * @return 当前应用使用的Maven依赖版本
-	 */
-	@Override
-	public String currentToolVersion() {
-		return Constants.OBS_SDK_VERSION;
-	}
-
-	/**
-	 * 获取当前版本
-	 *
-	 * @return Obs版本
-	 */
-	@Override
-	public String currentVersion() {
-		return Constants.OBS_SDK_VERSION;
-	}
 
 	//----------------------- bucket
 	// Doc: https://docs.min.io/docs/java-client-api-reference.html#bucketExists
@@ -149,5 +129,25 @@ public class MinioOperate extends AbstractS3 implements S3BucketApi, S3ObjectApi
 	public String putObject(final InputStream inputStream) {
 
 		return null;
+	}
+
+	/**
+	 * 当前服务引用官方SDK版本
+	 *
+	 * @return 官方SDK版本
+	 */
+	@Override
+	public String currentApplicationSDKVersion() {
+		return null;
+	}
+
+	/**
+	 * 当前工程版本
+	 *
+	 * @return 当前Balance-SDK版本
+	 */
+	@Override
+	public String currentBalanceSDKVersion() {
+		return Balance.BALANCE_MINIO_DEV_SDK_VERSION;
 	}
 }

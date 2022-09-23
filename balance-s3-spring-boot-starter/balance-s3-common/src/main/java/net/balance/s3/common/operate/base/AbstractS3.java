@@ -9,17 +9,17 @@ package net.balance.s3.common.operate.base;
 public abstract class AbstractS3 {
 
 	/**
-	 * 获取当前工具版本
+	 * 当前服务引用官方SDK版本
 	 *
-	 * @return 当前应用使用的Maven依赖版本
+	 * @return 官方SDK版本
 	 */
-	public abstract String currentToolVersion();
+	public abstract String currentApplicationSDKVersion();
 
 	/**
-	 * 获取当前版本
+	 * 当前工程版本
 	 *
-	 * @return 当前存储产品版本
+	 * @return 当前Balance-SDK版本
 	 */
-	public abstract String currentVersion();
+	public abstract String currentBalanceSDKVersion();
 }
 
