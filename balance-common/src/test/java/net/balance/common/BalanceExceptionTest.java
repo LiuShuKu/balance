@@ -21,7 +21,7 @@ public class BalanceExceptionTest {
 	public void TestBalanceException1() {
 
 		Either either = Either.warpBalanceSupplier(() -> {
-			BalanceExceptionUtil.newBalanceException();
+		//	BalanceExceptionUtil.newBalanceException();
 			return null;
 		});
 		System.out.println(either);

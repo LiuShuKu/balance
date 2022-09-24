@@ -210,7 +210,7 @@ public class Either<E, V> {
 
 	@Override
 	public String toString() {
-		return "Either{" +
+		return "Balance Either{" +
 				"exception=" + exception +
 				", value=" + value +
 				'}';

@@ -2,7 +2,11 @@ package net.balance.obs.autoconfigure;
 
 import com.obs.services.Log4j2Configurator;
 import com.obs.services.ObsClient;
+import net.balance.common.Balance;
+import net.balance.common.system.error.base.BalanceExceptionUtil;
+import net.balance.common.system.model.BalanceCode;
 import net.balance.obs.properties.ObsProperties;
+import net.balance.s3.common.internal.ObsConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -42,10 +46,20 @@ public class BalanceObsAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public ObsClient obsClient(final ObsProperties properties) {
+
 		Log4j2Configurator.setLogConfig("src/main/resources/log4j2.xml");
+
 		if (properties == null || properties.isEmpty()) {
 			logger.error("【OBS自动化配置】ObsClient 将无法被初始化.因为没有Obs所需参数,请检查！");
 		}
-		return new ObsClient(properties.getAccessKey(), properties.getSecretKey(), properties.getEndpoint());
+
+		final ObsClient obsClient = new ObsClient(properties.getAccessKey(), properties.getSecretKey(), properties.getEndpoint());
+
+		if (null != obsClient) {
+			logger.info("【Balance-OBS】: 服务启动成功！当前SDK版本:{},当前obs服务依赖版本{}", Balance.BALANCE_OBS_DEV_SDK_VERSION, ObsConstants.OBS_SDK_VERSION);
+		} else {
+			BalanceExceptionUtil.newBalanceException("无法初始化obsClient", BalanceCode.CodeMissingConfiguration);
+		}
+		return obsClient;
 	}
 }

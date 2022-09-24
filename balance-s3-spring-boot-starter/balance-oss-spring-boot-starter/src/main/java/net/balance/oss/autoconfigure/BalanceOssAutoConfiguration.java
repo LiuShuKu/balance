@@ -3,7 +3,11 @@ package net.balance.oss.autoconfigure;
 import com.aliyun.oss.ClientBuilderConfiguration;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
+import net.balance.common.Balance;
+import net.balance.common.system.error.base.BalanceExceptionUtil;
+import net.balance.common.system.model.BalanceCode;
 import net.balance.oss.properties.OssProperties;
+import net.balance.s3.common.internal.OssConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -53,6 +57,16 @@ public class BalanceOssAutoConfiguration {
 		{
 			conf.setUserAgent("balance-oss-service");
 		}
-		return new OSSClientBuilder().build(properties.getEndpoint(), properties.getAccessKeyId(), properties.getAccessKeySecret(), conf);
+
+		final OSS ossClient = new OSSClientBuilder().build(properties.getEndpoint(), properties.getAccessKeyId(), properties.getAccessKeySecret(), conf);
+
+		if (null != ossClient) {
+			logger.info("【Balance-OSS】: 服务启动成功！当前SDK版本:{},当前oss服务依赖版本{}", Balance.BALANCE_OSS_DEV_SDK_VERSION, OssConstants.OSS_SDK_VERSION);
+		}
+		{
+			BalanceExceptionUtil.newBalanceException("无法初始化ossClient", BalanceCode.CodeMissingConfiguration);
+		}
+		return ossClient;
+
 	}
 }

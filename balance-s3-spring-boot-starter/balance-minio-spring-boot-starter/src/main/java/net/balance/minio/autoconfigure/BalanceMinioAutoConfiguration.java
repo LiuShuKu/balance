@@ -2,6 +2,8 @@ package net.balance.minio.autoconfigure;
 
 import io.minio.MinioClient;
 import net.balance.common.Balance;
+import net.balance.common.system.error.base.BalanceExceptionUtil;
+import net.balance.common.system.model.BalanceCode;
 import net.balance.minio.properties.MinioProperties;
 import net.balance.s3.common.internal.MinioConstants;
 import org.slf4j.Logger;
@@ -49,8 +51,11 @@ public class BalanceMinioAutoConfiguration {
 		}
 
 		final MinioClient client = MinioClient.builder().endpoint(properties.getEndpoint()).credentials(properties.getAccessKey(), properties.getSecretKey()).build();
+
 		if (null != client) {
 			logger.info("【Balance-Minio】: 服务启动成功！当前SDK版本:{},当前minio依赖版本{}", Balance.BALANCE_MINIO_DEV_SDK_VERSION, MinioConstants.MINIO_SDK_VERSION);
+		} else {
+			BalanceExceptionUtil.newBalanceException("无法初始化minioClient", BalanceCode.CodeMissingConfiguration);
 		}
 		return client;
 	}

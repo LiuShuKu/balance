@@ -18,9 +18,9 @@ public class BalanceException extends RuntimeException {
 	private BalanceCode balanceCode;
 
 	/**
-	 *
+	 * 定义异常载体
 	 */
-	private Exception innerException;
+	private static Exception innerException;
 
 	/**
 	 * 向异常中设置错误信息
@@ -34,7 +34,7 @@ public class BalanceException extends RuntimeException {
 	/**
 	 * 初始化 异常
 	 */
-	protected BalanceException() {
+	private BalanceException() {
 		super();
 	}
 
@@ -43,7 +43,7 @@ public class BalanceException extends RuntimeException {
 	 *
 	 * @param balanceCode 载体内容
 	 */
-	protected BalanceException(final BalanceCode balanceCode) {
+	public BalanceException(final BalanceCode balanceCode) {
 		super();
 		this.balanceCode = balanceCode;
 	}

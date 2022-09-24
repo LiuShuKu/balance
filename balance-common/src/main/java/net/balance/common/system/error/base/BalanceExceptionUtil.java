@@ -10,14 +10,14 @@ import net.balance.common.system.model.BalanceCode;
  */
 public class BalanceExceptionUtil {
 
-	/**
-	 * 抛出BalanceException
-	 *
-	 * @throws BalanceException
-	 */
-	public static void newBalanceException() throws BalanceException {
-		throw new BalanceException();
-	}
+//	/**
+//	 * 抛出BalanceException
+//	 *
+//	 * @throws BalanceException
+//	 */
+//	public static void newBalanceException() throws BalanceException {
+//		throw new BalanceException();
+//	}
 
 	/**
 	 * 抛出BalanceException
@@ -62,17 +62,17 @@ public class BalanceExceptionUtil {
 	}
 
 
-	/**
-	 * 断言成功将抛出 BalanceException
-	 *
-	 * @param assertion 断言条件
-	 * @throws BalanceException
-	 */
-	public static void balanceException(final boolean assertion) throws BalanceException {
-		if (assertion) {
-			throw new BalanceException();
-		}
-	}
+//	/**
+//	 * 断言成功将抛出 BalanceException
+//	 *
+//	 * @param assertion 断言条件
+//	 * @throws BalanceException
+//	 */
+//	public static void balanceException(final boolean assertion) throws BalanceException {
+//		if (assertion) {
+//			throw new BalanceException();
+//		}
+//	}
 
 	/**
 	 * 断言成功将抛出 BalanceException

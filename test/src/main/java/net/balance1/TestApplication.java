@@ -1,18 +1,19 @@
 package net.balance1;
 
-import net.balance.minio.properties.MinioProperties;
+import net.balance.common.system.error.Either;
+import net.balance.common.system.error.base.BalanceExceptionUtil;
+import net.balance.common.system.model.BalanceCode;
+import net.balance.minio.autoconfigure.BalanceMinioAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-
 /**
  * @author liushuku
  */
 @RestController
-@SpringBootApplication(scanBasePackages = {"net.balance.minio"})
+@SpringBootApplication(exclude = BalanceMinioAutoConfiguration.class)
 public class TestApplication {
 
 //	@Resource
@@ -21,16 +22,19 @@ public class TestApplication {
 //	@Resource
 //	private GeTuiProperties geTuiProperties;
 
-	@Resource
-	private MinioProperties minioProperties;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TestApplication.class, args);
 	}
 
 	@GetMapping("test")
-	public String test() {
-		return minioProperties.getAccessKey();
+	public void test() {
+		final Either either = Either.warpBalanceSupplier(() -> {
+			BalanceExceptionUtil.newBalanceException("wwww", BalanceCode.CodeInternalError);
+			return null;
+		});
+
+		System.out.println(either.getException());
 		// return geTuiAuth.getToken();
 	}
 
