@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 读取阿里云Oss配置 <br>
  * <p>
  * 官方文档: <br>
- * <a href="http://doc.oss.aliyuncs.com/">...</a>
+ * <a href="https://help.aliyun.com/product/31815.html?spm=5176.7933691.J_5253785160.6.195e4c5908DOqc/">...</a>
  *
  * @author : ShuLiu
  * @date : 22 : 09 : 2022/9/22

@@ -62,8 +62,7 @@ public class BalanceOssAutoConfiguration {
 
 		if (null != ossClient) {
 			logger.info("【Balance-OSS】: 服务启动成功！当前SDK版本:{},当前oss服务依赖版本{}", Balance.BALANCE_OSS_DEV_SDK_VERSION, OssConstants.OSS_SDK_VERSION);
-		}
-		{
+		} else {
 			BalanceExceptionUtil.newBalanceException("无法初始化ossClient", BalanceCode.CodeMissingConfiguration);
 		}
 		return ossClient;

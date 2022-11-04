@@ -1,10 +1,12 @@
 package net.balance.oss.operate;
 
+import com.aliyun.oss.OSS;
 import io.minio.messages.Bucket;
 import net.balance.common.Balance;
 import net.balance.s3.common.internal.OssConstants;
 import net.balance.s3.common.operate.api.S3BucketApi;
 import net.balance.s3.common.operate.base.AbstractS3;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,7 +20,11 @@ import java.util.List;
  * @date : 23 : 09 : 2022/9/23
  */
 @Component
+@SuppressWarnings("all")
 public class OssOperate extends AbstractS3 implements S3BucketApi {
+
+	@Autowired(required = false)
+	private OSS ossClient;
 
 	/**
 	 * 创建存储桶
